@@ -13,3 +13,6 @@ A terminal. Very barebones but functional.
 5. Install the software (root permissions required!)  
 `$ sudo make install`  
 Good! The Software is now built and executable!  
+
+## Requirements  
+* QTermWidget
