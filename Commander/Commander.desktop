@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Commander
+GenericName=Terminal
+GenericName[de]=Terminal
+Comment=Run Shell commands
+Comment[de]=Shell-Befehle ausführen
+
+Icon=akonadiconsole
+
+Type=Application
+Categories=Qt;System;TerminalEmulator;
+
+Exec=/usr/share/Commander/Commander
+StartupNotify=false
+Terminal=false
+

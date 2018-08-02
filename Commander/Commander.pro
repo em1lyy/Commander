@@ -39,3 +39,14 @@ INCLUDEPATH += \
 LIBS += \
         "/usr/lib/x86_64-linux-gnu/libqtermwidget5.so.0" \
         "/usr/lib/x86_64-linux-gnu/libqtermwidget5.so.0.6.0"
+
+commander.path = /usr/share/Commander
+commander.files += Commander
+commander.files += Commander.desktop
+
+desktop.path = /usr/share/applications
+desktop.files += Commander.desktop
+
+INSTALLS += \
+    commander \
+    desktop
