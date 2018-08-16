@@ -14,7 +14,7 @@
    <string>Commander</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="akonadiconsole">
+   <iconset theme="utilities-terminal">
     <normaloff>.</normaloff>.</iconset>
   </property>
   <widget class="QTermWidget" name="centralWidget"/>
