@@ -11,10 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Commander</string>
   </property>
   <property name="windowIcon">
-   <iconset theme="akonadiconsole"/>
+   <iconset theme="akonadiconsole">
+    <normaloff>.</normaloff>.</iconset>
   </property>
   <widget class="QTermWidget" name="centralWidget"/>
  </widget>
