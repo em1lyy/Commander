@@ -1,5 +1,5 @@
 # Commander  
-A terminal. Very barebones but functional.  
+A terminal. Very barebones, but functional.  
   
 ## Build instructions  
 1. Clone the repository  
