@@ -37,10 +37,6 @@ FORMS += \
 INCLUDEPATH += \
         "/usr/include/qtermwidget5"
 
-LIBS += \
-        "/usr/lib/x86_64-linux-gnu/libqtermwidget5.so.0" \
-        "/usr/lib/x86_64-linux-gnu/libqtermwidget5.so.0.6.0"
-
 commander.path = $$PREFIX/usr/share/Commander
 commander.files += Commander
 commander.files += Commander.desktop
