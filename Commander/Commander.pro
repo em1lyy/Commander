@@ -34,8 +34,7 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-INCLUDEPATH += \
-        "/usr/include/qtermwidget5"
+unix:!macx: LIBS += -lqtermwidget5
 
 commander.path = $$PREFIX/usr/share/Commander
 commander.files += Commander

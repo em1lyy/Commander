@@ -5,6 +5,7 @@
 #include <QShortcut>
 #include <QKeySequence>
 #include <QMessageBox>
+#include <qtermwidget5/qtermwidget.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
