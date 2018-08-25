@@ -1,6 +1,6 @@
 # Maintainer: Jonas Jaguar <jonasjaguar@jagudev.net>
 pkgname=jagudev-commander
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A terminal. Very barebones, but functional."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(qt5-base qtermwidget)
 makedepends=(gcc make)
 options=()
 source=("https://github.com/jonasjaguar/Commander/archive/$pkgver.tar.gz")
-md5sums=('7801dfad8e0a4f096753f7ce0589f795')
+md5sums=('8239100c24ceda0c2694aef5437bfe66')
 validpgpkeys=()
 
 
