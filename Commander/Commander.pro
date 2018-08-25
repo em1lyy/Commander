@@ -9,6 +9,7 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Commander
+TARGET.path = $$PREFIX/
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -40,11 +41,11 @@ LIBS += \
         "/usr/lib/x86_64-linux-gnu/libqtermwidget5.so.0" \
         "/usr/lib/x86_64-linux-gnu/libqtermwidget5.so.0.6.0"
 
-commander.path = /usr/share/Commander
+commander.path = $$PREFIX/usr/share/Commander
 commander.files += Commander
 commander.files += Commander.desktop
 
-desktop.path = /usr/share/applications
+desktop.path = $$PREFIX/usr/share/applications
 desktop.files += Commander.desktop
 
 INSTALLS += \
