@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     QFont font = QApplication::font();
     font.setFamily("Hack");
-    font.setPointSize(17);
+    font.setPointSize(14);
     this->greenScheme = false;
     ui->setupUi(this);
     this->ui->centralWidget->setTerminalFont(font);
@@ -29,6 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(scheme, &QShortcut::activated, this, &MainWindow::switchScheme);
     QShortcut *help = new QShortcut(Qt::Key_F1, this);
     connect(help, &QShortcut::activated, this, &MainWindow::showHelp);
+    QShortcut *zout = new QShortcut(QKeySequence("Ctrl+-"), this);
+    connect(zout, &QShortcut::activated, this->ui->centralWidget, &QTermWidget::zoomOut);
+    QShortcut *zin = new QShortcut(QKeySequence("Ctrl++"), this);
+    connect(zin, &QShortcut::activated, this->ui->centralWidget, &QTermWidget::zoomIn);
 }
 
 void MainWindow::switchScheme()

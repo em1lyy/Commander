@@ -5,7 +5,7 @@ GenericName[de]=Terminal
 Comment=Run Shell commands
 Comment[de]=Shell-Befehle ausführen
 
-Icon=akonadiconsole
+Icon=utilities-terminal
 
 Type=Application
 Categories=Qt;System;TerminalEmulator;
