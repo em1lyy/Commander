@@ -7,6 +7,8 @@
 #include <QMessageBox>
 #include <qtermwidget5/qtermwidget.h>
 #include <stdlib.h>
+#include <QSettings>
+#include <QProcess>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,11 +19,18 @@ MainWindow::MainWindow(QWidget *parent) :
     font.setPointSize(14);
     this->greenScheme = false;
     ui->setupUi(this);
-    setenv("TERM", "konsole-256color", 1);
+    setenv("TERM", "xterm-256color", 1);
+    //this->ui->centralWidget->
     qDebug() << getenv("TERM");
+    QSettings settings("JaguDev", "Commander");
+    settings.setValue("Term", "xterm-256color");
+    QStringList env = QProcess::systemEnvironment();
+    env << "TERM=xterm-256color"; // Add an environment variable
+    this->ui->centralWidget->setEnvironment(env);
     this->ui->centralWidget->setTerminalFont(font);
     this->ui->centralWidget->setScrollBarPosition(QTermWidget::ScrollBarRight);
-    this->ui->centralWidget->setColorScheme("WhiteOnBlack");
+    this->ui->centralWidget->setColorScheme("Linux");
+    qDebug() << this->ui->centralWidget->availableColorSchemes() << " " << this->ui->centralWidget->availableKeyBindings();
     this->ui->centralWidget->setKeyBindings("linux");
     connect(this->ui->centralWidget, &QTermWidget::finished, this, &MainWindow::close);
     QShortcut *copy = new QShortcut(QKeySequence("Ctrl+Shift+C"), this);
