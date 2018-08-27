@@ -6,6 +6,7 @@
 #include <QKeySequence>
 #include <QMessageBox>
 #include <qtermwidget5/qtermwidget.h>
+#include <stdlib.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
     font.setPointSize(14);
     this->greenScheme = false;
     ui->setupUi(this);
+    setenv("TERM", "konsole-256color", 1);
+    qDebug() << getenv("TERM");
     this->ui->centralWidget->setTerminalFont(font);
     this->ui->centralWidget->setScrollBarPosition(QTermWidget::ScrollBarRight);
     this->ui->centralWidget->setColorScheme("WhiteOnBlack");
