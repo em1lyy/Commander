@@ -17,17 +17,9 @@
    <iconset theme="utilities-terminal">
     <normaloff>.</normaloff>.</iconset>
   </property>
-  <widget class="QTermWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>QTermWidget</class>
-   <extends>QWidget</extends>
-   <header>qtermwidget5/qtermwidget.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

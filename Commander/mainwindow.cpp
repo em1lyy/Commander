@@ -18,45 +18,50 @@ MainWindow::MainWindow(QWidget *parent) :
     font.setFamily("Hack");
     font.setPointSize(14);
     this->greenScheme = false;
+    setenv("TERM", "xterm-256color", 1);
+    qDebug() << getenv("TERM");
+    QTermWidget *console = new QTermWidget();
     ui->setupUi(this);
     setenv("TERM", "xterm-256color", 1);
-    //this->ui->centralWidget->
     qDebug() << getenv("TERM");
     QSettings settings("JaguDev", "Commander");
     settings.setValue("Term", "xterm-256color");
     QStringList env = QProcess::systemEnvironment();
     env << "TERM=xterm-256color"; // Add an environment variable
-    this->ui->centralWidget->setEnvironment(env);
-    this->ui->centralWidget->setTerminalFont(font);
-    this->ui->centralWidget->setScrollBarPosition(QTermWidget::ScrollBarRight);
-    this->ui->centralWidget->setColorScheme("Linux");
-    qDebug() << this->ui->centralWidget->availableColorSchemes() << " " << this->ui->centralWidget->availableKeyBindings();
-    this->ui->centralWidget->setKeyBindings("linux");
-    connect(this->ui->centralWidget, &QTermWidget::finished, this, &MainWindow::close);
+    console->setEnvironment(env);
+    console->setTerminalFont(font);
+    console->setScrollBarPosition(QTermWidget::ScrollBarRight);
+    console->setColorScheme("Linux");
+    qDebug() << console->availableColorSchemes() << " " << console->availableKeyBindings();
+    console->setKeyBindings("linux");
+    connect(console, &QTermWidget::finished, this, &MainWindow::close);
     QShortcut *copy = new QShortcut(QKeySequence("Ctrl+Shift+C"), this);
-    connect(copy, &QShortcut::activated, this->ui->centralWidget, &QTermWidget::copyClipboard);
+    connect(copy, &QShortcut::activated, console, &QTermWidget::copyClipboard);
     QShortcut *paste = new QShortcut(QKeySequence("Ctrl+Shift+V"), this);
-    connect(paste, &QShortcut::activated, this->ui->centralWidget, &QTermWidget::pasteClipboard);
+    connect(paste, &QShortcut::activated, console, &QTermWidget::pasteClipboard);
     QShortcut *scheme = new QShortcut(QKeySequence("Ctrl+Shift+S"), this);
     connect(scheme, &QShortcut::activated, this, &MainWindow::switchScheme);
     QShortcut *help = new QShortcut(Qt::Key_F1, this);
     connect(help, &QShortcut::activated, this, &MainWindow::showHelp);
     QShortcut *zout = new QShortcut(QKeySequence("Ctrl+-"), this);
-    connect(zout, &QShortcut::activated, this->ui->centralWidget, &QTermWidget::zoomOut);
+    connect(zout, &QShortcut::activated, console, &QTermWidget::zoomOut);
     QShortcut *zin = new QShortcut(QKeySequence("Ctrl++"), this);
-    connect(zin, &QShortcut::activated, this->ui->centralWidget, &QTermWidget::zoomIn);
+    connect(zin, &QShortcut::activated, console, &QTermWidget::zoomIn);
+    this->setCentralWidget(console);
+    setenv("TERM", "xterm-256color", 1);
+    qDebug() << getenv("TERM");
 }
 
 void MainWindow::switchScheme()
 {
     if (greenScheme)
     {
-        this->ui->centralWidget->setColorScheme("WhiteOnBlack");
+        //this->ui->centralWidget->setColorScheme("WhiteOnBlack");
         greenScheme = false;
     }
     else
     {
-        this->ui->centralWidget->setColorScheme("GreenOnBlack");
+        //this->ui->centralWidget->setColorScheme("GreenOnBlack");
         greenScheme = true;
     }
 }
