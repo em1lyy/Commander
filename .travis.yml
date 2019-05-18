@@ -9,13 +9,24 @@ before_install:
   - sudo apt-get update
 
 install:
-  - sudo apt-get install qt512base qt512multimedia qt512imageformats qt512translations libgl1-mesa-dev libgl1-mesa-glx libqtermwidget5-0-dev libqtermwidget5-0 -y
+  - sudo apt-get install qt512base qt512multimedia qt512imageformats qt512translations libgl1-mesa-dev libgl1-mesa-glx libqtermwidget5-0-dev libqtermwidget5-0 fakeroot -y
   - source /opt/qt512/bin/qt512-env.sh
 
 script:
   - cd Commander/
   - /opt/qt512/bin/qmake ./Commander.pro -spec linux-g++ && /usr/bin/make qmake_all
   - make
+  - cd ../
+  - cd pkg/
+  - wget https://gist.githubusercontent.com/jonasjaguar/3cafb962541cf1064771ba54e4cf0217/raw/e76882caa4968b46715ac06a23174b97e9329a69/makedeb
+  - chmod +x makedeb
+  - sudo ./makedeb --nodeps
+  - DEBNAME=$(find . -name jagudev-commander_*)
+  - cp $DEBNAME ../jagudev-commander_current.deb
+  - cd ..
+  - cd Commander/
+  - tar cfvz ../Commander.tar.gz Commander Commander.desktop
+  - cd ..
 
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
@@ -25,6 +36,18 @@ after_failure:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
   - ./send.sh failure $WEBHOOK_URL
+
+deploy:
+  provider: releases
+  api_key:
+    secure: jPgCIljqAaJPMCXLXYzW5JkEnYqDGqTcDi6pqBG3YjJlT2UK7ma9QKfZD8Z7erdcUPc6yw/Nw4AUlAvUhdfKGy9M/nkEeWbpZSbKpkOa+i7i0Iz4g8GRRAUdoGDoC1ZuHmPqf/Trvd+yy6XmP5tdLIbvrOlb4KBQ5PQqHWO4L70upMkMsY7P94MATMNV/Hp31IHUAQRTqeOzs55+kai9WW0gpMOi7zU3s1j39UFKh/+2I7UK59BXJ/8nk7vvqvs7XFXFKN7kBQM2KelbdhhoMCZeHuJ85cfL5BYJfN06HiP1gxypEVYTh1w+bDXd2I3HjDhVvzFCBNmL03LGoQaHP5OwlLUq9LbMA4oZtjtENB0OUpEOoVlLmFkOWoB9WUI0G/QALmsIxdyDPD4mlg5GrHHoh3iQGwPe4fhLZl25tOGUl4v9GPrh9fqDnF7/8anzc4WRcbEvly58p6/3ABLz7r+D/YqxcFvndb9RWPtx8H43ewlCFI8HpERBZRkhkeP9cvFzIgy/W8jwJHkhSEkcRjLPPTPI8LSb7LWuyXS8G1GKrhTYeFaE+ad6Uy9aKXMPmobvthoQ4Ux4IvuIx6zOv8utIuN69fKWnxsZD9DU3SNq3avUCJfYJUb8hI4FI41z50G6O1jprq7J4OaWtd2WJ9Nz2txZnLBll0orqgoW1kE=
+  file:
+    - Commander.tar.gz
+    - jagudev-commander_current.deb
+  skip_cleanup: true
+  on:
+    tags: true
+    repo: jonasjaguar/Commander
 
 notifications:
   email:
