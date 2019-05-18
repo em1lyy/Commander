@@ -10,7 +10,7 @@ depends=(qt5-base qtermwidget)
 makedepends=(gcc make)
 options=()
 source=("https://github.com/jonasjaguar/Commander/archive/$pkgver.tar.gz")
-md5sums=('449919ff4debf8b14f8d3bf73a58566b')
+md5sums=('SKIP')
 validpgpkeys=()
 
 
