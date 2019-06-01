@@ -1,6 +1,6 @@
 # Maintainer: Jonas Jaguar <jonasjaguar@jagudev.net>
 pkgname=jagudev-commander
-pkgver=1.2
+pkgver=19.06
 pkgrel=1
 pkgdesc="A terminal. Very barebones, but functional."
 arch=('x86_64')

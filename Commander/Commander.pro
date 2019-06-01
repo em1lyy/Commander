@@ -28,6 +28,10 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp
 
+TRANSLATIONS = \
+         de.ts \
+         fr.ts
+
 HEADERS += \
         mainwindow.h
 
@@ -46,3 +50,6 @@ desktop.files += Commander.desktop
 INSTALLS += \
     commander \
     desktop
+
+RESOURCES += \
+    commander_resources.qrc

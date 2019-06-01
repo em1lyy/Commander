@@ -5,7 +5,6 @@
 #include <QShortcut>
 #include <QKeySequence>
 #include <QMessageBox>
-#include <qtermwidget5/qtermwidget.h>
 #include <stdlib.h>
 #include <QSettings>
 #include <QProcess>
@@ -47,7 +46,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(zout, &QShortcut::activated, console, &QTermWidget::zoomOut);
     QShortcut *zin = new QShortcut(QKeySequence("Ctrl++"), this);
     connect(zin, &QShortcut::activated, console, &QTermWidget::zoomIn);
+    connect(this->ui->actionCopy, &QAction::triggered, console, &QTermWidget::copyClipboard);
+    connect(this->ui->actionPaste, &QAction::triggered, console, &QTermWidget::pasteClipboard);
+    connect(this->ui->action_Switch_Scheme, &QAction::triggered, this, &MainWindow::switchScheme);
+    connect(this->ui->action_Help, &QAction::triggered, this, &MainWindow::showHelp);
+    connect(this->ui->actionZoom_In, &QAction::triggered, console, &QTermWidget::zoomIn);
+    connect(this->ui->actionZoom_Out, &QAction::triggered, console, &QTermWidget::zoomOut);
+    connect(this->ui->actionAbout, &QAction::triggered, this, &MainWindow::about);
+    connect(this->ui->actionAbout_Qt, &QAction::triggered, &QApplication::aboutQt);
     this->setCentralWidget(console);
+    this->conwid = console;
     setenv("TERM", "xterm-256color", 1);
     qDebug() << getenv("TERM");
 }
@@ -56,12 +64,12 @@ void MainWindow::switchScheme()
 {
     if (greenScheme)
     {
-        //this->ui->centralWidget->setColorScheme("WhiteOnBlack");
+        this->conwid->setColorScheme("WhiteOnBlack");
         greenScheme = false;
     }
     else
     {
-        //this->ui->centralWidget->setColorScheme("GreenOnBlack");
+        this->conwid->setColorScheme("GreenOnBlack");
         greenScheme = true;
     }
 }
@@ -69,10 +77,16 @@ void MainWindow::switchScheme()
 void MainWindow::showHelp()
 {
     QMessageBox *helpbox = new QMessageBox();
-    helpbox->setWindowTitle("Help - Commander");
-    helpbox->setText(tr("Help:\nCtrl+Shift+C: Copy selected text\nCtrl+Shift+V: Paste Clipboard\nCtrl+Shift+S: Switch color scheme\nF1: Show this window"));
+    helpbox->setWindowTitle(tr("Help - Commander"));
+    helpbox->setText(tr("Help:\nCtrl+Shift+C: Copy selected text\nCtrl+Shift+V: Paste Clipboard\nCtrl+Shift+S: Switch color scheme\nCtrl++: Zoom In\nCtrl+-: Zoom Out\nF1: Show this window"));
     helpbox->addButton(QMessageBox::Ok);
     helpbox->show();
+}
+
+void MainWindow::about()
+{
+    QMessageBox::about(this, tr("About Commander"),
+            tr("<p><b>Commander</b> is a very simple terminal,<br />based on QTermWidget and developed by JaguDev.</p>"));
 }
 
 MainWindow::~MainWindow()

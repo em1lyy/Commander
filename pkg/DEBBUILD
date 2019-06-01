@@ -1,5 +1,16 @@
 maintainer="Jonas Jaguar <jonasjaguar@jagudev.net>"
 pkgname=jagudev-commander
+pkgver=19.06
+pkgrel=1
+distribution="unstable"
+urgency="medium"
+pkgdesc="A terminal. Very barebones, but functional.\nOriginally intended for JaguOS, now for everyone, on every distro."
+section="misc"
+priority="optional"
+arch=('all')
+url="https://jagudev.net"
+depends=('libqt5multimedia5' 'qt5-default' 'libqt5multimediawidgets5' 'maintainer="Jonas Jaguar <jonasjaguar@jagudev.net>"
+pkgname=jagudev-commander
 pkgver=1.2
 pkgrel=1
 distribution="unstable"
@@ -9,7 +20,36 @@ section="misc"
 priority="optional"
 arch=('all')
 url="https://jagudev.net"
-depends=('libqt5multimedia5' 'qt5-default' 'libqt5multimediawidgets5')
+depends=('libqt5multimedia5' 'qt5-default' 'libqt5multimediawidgets5' 'libqtermwidget5-0-dev' 'libqtermwidget5-0')
+builddepends=('gcc' 'make')
+recommends=()
+suggests=()
+provides=()
+breaks=()
+conflicts=()
+replaces=()
+source=("https://github.com/jonasjaguar/Commander/archive/$pkgver.tar.gz")
+
+prepare() {
+	echo "No preparation needed"
+}
+
+check() {
+	echo "Check function, not needed"
+}
+
+build() {
+	cd "$srcdir/Commander-$pkgver/Commander"
+	/opt/qt512/bin/qmake ./Commander.pro -spec linux-g++ && /usr/bin/make qmake_all
+	make
+}
+
+package() {
+	cd "$srcdir/Commander-$pkgver/Commander"
+	make INSTALL_ROOT="$pkgdir" install
+}
+ 
+')
 builddepends=('gcc' 'make')
 recommends=()
 suggests=()
