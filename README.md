@@ -16,3 +16,6 @@ Good! The Software is now built and executable!
 
 ## Requirements  
 * QTermWidget
+
+# Demo Screenshot 
+![](https://github.com/jonasjaguar/Commander/blob/add-screenshot/screenshot.png?raw=true)
