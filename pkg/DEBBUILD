@@ -1,21 +1,21 @@
-maintainer="Jonas Jaguar <jonasjaguar@jagudev.net>"
+maintainer="Emily <elishikawa@jagudev.net>"
 pkgname=jagudev-commander
 pkgver=19.06
 pkgrel=1
 distribution="unstable"
 urgency="medium"
-pkgdesc="A terminal. Very barebones, but functional.\nOriginally intended for JaguOS, now for everyone, on every distro."
+pkgdesc="A terminal. Very barebones, but it works."
 section="misc"
 priority="optional"
 arch=('all')
 url="https://jagudev.net"
-depends=('libqt5multimedia5' 'qt5-default' 'libqt5multimediawidgets5' 'maintainer="Jonas Jaguar <jonasjaguar@jagudev.net>"
+depends=('libqt5multimedia5' 'qt5-default' 'libqt5multimediawidgets5' 'Emily <elishikawa@jagudev.net>"
 pkgname=jagudev-commander
 pkgver=1.2
 pkgrel=1
 distribution="unstable"
 urgency="medium"
-pkgdesc="A terminal. Very barebones, but functional.\nOriginally intended for JaguOS, now for everyone, on every distro."
+pkgdesc="A terminal. Very barebones, but it works"
 section="misc"
 priority="optional"
 arch=('all')
@@ -28,7 +28,7 @@ provides=()
 breaks=()
 conflicts=()
 replaces=()
-source=("https://github.com/jonasjaguar/Commander/archive/$pkgver.tar.gz")
+source=("https://github.com/em1lyy/Commander/archive/$pkgver.tar.gz")
 
 prepare() {
 	echo "No preparation needed"
