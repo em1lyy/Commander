@@ -1,9 +1,9 @@
 # Commander  
-A terminal. Very barebones, but functional.  
+A terminal. Very barebones, but it works.  
   
 ## Build instructions  
 1. Clone the repository  
-`$ git clone https://github.com/jonasjaguar/Commander.git`  
+`$ git clone https://github.com/em1lyy/Commander.git`  
 2. Change to the directory  
 `$ cd Commander/Commander/`  
 3. Generate the Makefile  
@@ -18,4 +18,4 @@ Good! The Software is now built and executable!
 * QTermWidget
 
 # Demo Screenshot 
-![](https://github.com/jonasjaguar/Commander/blob/master/screenshot.png?raw=true)
+![](https://github.com/em1lyy/Commander/blob/master/screenshot.png?raw=true)
