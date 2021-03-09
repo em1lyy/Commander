@@ -1,9 +1,9 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: jagudev-commander
-Source: https://github.com/jonasjaguar/Commander
+Source: https://github.com/em1lyy/Commander
 
 Files: *
-Copyright: 2019, Jonas Jaguar <jonasjaguar@jagudev.net>
+Copyright: 2019 - 2021, Emily <elishikawa@jagudev.net>
 License: GPL-3+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
