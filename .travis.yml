@@ -18,7 +18,7 @@ script:
   - make
   - cd ../
   - cd pkg/
-  - wget https://gist.githubusercontent.com/jonasjaguar/3cafb962541cf1064771ba54e4cf0217/raw/e76882caa4968b46715ac06a23174b97e9329a69/makedeb
+  - wget https://gist.githubusercontent.com/em1lyy/3cafb962541cf1064771ba54e4cf0217/raw/e76882caa4968b46715ac06a23174b97e9329a69/makedeb
   - chmod +x makedeb
   - sudo ./makedeb --nodeps
   - DEBNAME=$(find . -name jagudev-commander_*)
@@ -47,11 +47,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    repo: jonasjaguar/Commander
-
-notifications:
-  email:
-    recipients:
-      - jonasjaguar@jagudev.net
-    on_success: always
-    on_failure: always
+    repo: em1lyy/Commander
