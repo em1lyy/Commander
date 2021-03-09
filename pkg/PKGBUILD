@@ -1,15 +1,15 @@
-# Maintainer: Jonas Jaguar <jonasjaguar@jagudev.net>
+# Maintainer: Emily <elishikawa@jagudev.net>
 pkgname=jagudev-commander
 pkgver=19.06
 pkgrel=1
-pkgdesc="A terminal. Very barebones, but functional."
+pkgdesc="A terminal. Very barebones, but it works."
 arch=('x86_64')
 url="https://jagudev.net"
 license=('GPL3')
 depends=(qt5-base qtermwidget)
 makedepends=(gcc make)
 options=()
-source=("https://github.com/jonasjaguar/Commander/archive/$pkgver.tar.gz")
+source=("https://github.com/em1lyy/Commander/archive/$pkgver.tar.gz")
 md5sums=('SKIP')
 validpgpkeys=()
 
